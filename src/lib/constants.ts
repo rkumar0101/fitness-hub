@@ -1,6 +1,7 @@
 export const BRAND = {
   name: "Fitness Hub",
   phoneE164: "919999999999", // ✅ apna WhatsApp number: 91 + 10 digits (no +, no spaces)
+  email: "hello@fitnesshub.com",
   cityLine: "Your City, India",
   addressLine: "Your full address here",
   mapEmbedUrl: "https://www.google.com/maps?q=New%20Delhi&output=embed",

@@ -172,7 +172,7 @@ export default function Facilities() {
       {
         title: "Stretch area",
         desc: "Mobility and cool-down space.",
-        why: "Fewer injuries, better movement, quicker recovery. You’ll lift better.",
+        why: "Fewer injuries, better movement, quicker recovery. You'll lift better.",
         accent: "blue",
         icon: "mobility",
         tag: "Core",

@@ -6,5 +6,10 @@
   --fh-ink: #0b1220;
 }
 
-html { scroll-behavior: smooth; }
-body { color: var(--fh-ink); }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--fh-ink);
+}
