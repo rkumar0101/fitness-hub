@@ -19,8 +19,8 @@ const FAQS = [
     a: "Usually late morning and after 8:30 PM are calmer. Peak time is early morning and early evening.",
   },
   {
-    q: "Do you have strength + cardio equipment?",
-    a: "Yes. Strength area + cardio machines. If something is busy, we’ll suggest alternatives on the spot.",
+    q: "Do you have strength and cardio equipment?",
+    a: "Yes. Strength area and cardio machines are available. If something is busy, we’ll suggest alternatives on the spot.",
   },
   {
     q: "Can you help with fat loss or muscle gain plans?",
@@ -49,11 +49,11 @@ export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number>(0);
 
   return (
-    <section id="faq" className="bg-black/[0.02] py-16">
+    <section id="faq" className="scroll-mt-24 bg-black/[0.02] py-16">
       <Container>
         <SectionHeading
           eyebrow="FAQ"
-          title="Quick answers, no confusion"
+          title="Frequently asked questions"
           subtitle="If you still have questions, WhatsApp is the fastest."
         />
 

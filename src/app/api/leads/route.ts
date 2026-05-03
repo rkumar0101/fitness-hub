@@ -6,9 +6,10 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     return NextResponse.json({ ok: true, received: body });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Lead capture failed";
     return NextResponse.json(
-      { ok: false, error: err?.message ?? "Lead capture failed" },
+      { ok: false, error: message },
       { status: 500 }
     );
   }

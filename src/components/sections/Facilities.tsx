@@ -11,7 +11,7 @@ type Facility = {
   why: string;
   accent: "blue" | "red";
   icon: "spark" | "lock" | "cardio" | "strength" | "mobility" | "coach";
-  image: string; // direct image URL
+  image: string;
   tag?: string;
 };
 
@@ -136,8 +136,7 @@ export default function Facilities() {
         accent: "blue",
         icon: "spark",
         tag: "Top priority",
-        image:
-          "https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fit-beat-1.jpeg",
       },
       {
         title: "Lockers",
@@ -146,18 +145,16 @@ export default function Facilities() {
         accent: "red",
         icon: "lock",
         tag: "Pro",
-        image:
-          "https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fitness-hub-2-2.jpeg",
       },
       {
         title: "Cardio zone",
         desc: "Treadmills, cycles, warm-up space.",
-        why: "Good cardio setup makes fat loss + stamina training easier to stick with.",
+        why: "Good cardio setup makes fat-loss and stamina training easier to follow.",
         accent: "blue",
         icon: "cardio",
         tag: "Popular",
-        image:
-          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fitness-hub-4-1.jpeg",
       },
       {
         title: "Strength zone",
@@ -166,28 +163,25 @@ export default function Facilities() {
         accent: "red",
         icon: "strength",
         tag: "Most used",
-        image:
-          "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fit-beat-4.jpeg",
       },
       {
         title: "Stretch area",
         desc: "Mobility and cool-down space.",
-        why: "Fewer injuries, better movement, quicker recovery. You'll lift better.",
+        why: "Fewer injuries, better movement, and quicker recovery.",
         accent: "blue",
         icon: "mobility",
         tag: "Core",
-        image:
-          "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fitness-hub-4-4.jpeg",
       },
       {
         title: "Guided sessions",
         desc: "Trainer support when you need it.",
-        why: "Form fixes + routine guidance = faster progress and fewer mistakes.",
+        why: "Form correction and routine guidance help members progress with fewer mistakes.",
         accent: "red",
         icon: "coach",
         tag: "Pro",
-        image:
-          "https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?auto=format&fit=crop&w=1600&q=80",
+        image: "/gym-images/fitness-hub-2-5.jpeg",
       },
     ],
     []
@@ -210,9 +204,8 @@ export default function Facilities() {
     <section className="bg-white py-16">
       <Container>
         <SectionHeading
-          // eyebrow="Facilities"
           title="Facilities"
-          subtitle="Tap any card to preview it."
+          subtitle="Basic gym facilities members expect in a clean training space."
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-12">
@@ -330,17 +323,11 @@ export default function Facilities() {
                   </div>
 
                   <div className="mt-4 text-xs text-white/60">
-                    Tip: Tap cards to preview. Mobile pe click works.
+                    Tap a card to preview the facility.
                   </div>
                 </div>
               </div>
 
-              {/* mini unique strip */}
-              <div className="mt-4 rounded-2xl border border-black/10 bg-white p-4">
-                <p className="text-xs text-black/70">
-                  Clean space + simple plan = consistency. That’s the whole game.
-                </p>
-              </div>
             </div>
           </div>
         </div>

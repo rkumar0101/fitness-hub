@@ -4,6 +4,7 @@ import Stats from "@/components/sections/Stats";
 import Facilities from "@/components/sections/Facilities";
 // import Programs from "@/components/sections/Programs";
 import Plans from "@/components/sections/Plans";
+import PlanBuilder from "@/components/sections/PlanBuilder";
 import Trainers from "@/components/sections/Trainers";
 import Schedule from "@/components/sections/Schedule";
 import Reviews from "@/components/sections/Reviews";
@@ -11,7 +12,6 @@ import HowToStart from "@/components/sections/HowToStart";
 import LocationContact from "@/components/sections/LocationContact";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
-import PlanBuilder from "@/components/sections/PlanBuilder";
 // import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
 
 export default function HomePage() {
@@ -22,9 +22,9 @@ export default function HomePage() {
         <Hero />
         <Stats />
         <Facilities />
-        <PlanBuilder />
         {/* <Programs /> */}
         <Plans />
+        <PlanBuilder />
         <Trainers />
         <Schedule />
         <Reviews />

@@ -6,7 +6,7 @@ import { BRAND } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `${BRAND.name} | Gym & Fitness`,
   description:
-    "Fitness Hub helps you train smarter with real coaching, clean equipment, and flexible plans. Start with a free trial on WhatsApp.",
+    "Samz Fitness Hub has four gym branches across Siliguri with membership plans, personal training, and morning-evening training slots.",
 };
 
 export default function RootLayout({

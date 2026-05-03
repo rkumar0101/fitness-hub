@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { BRAND, NAV_LINKS, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
 import { waLink } from "@/lib/whatsapp";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -29,11 +30,18 @@ export default function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <a href="#top" className="flex items-center gap-2 font-bold">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black text-white">
-              FH
+          <a href="#top" className="flex items-center gap-3 font-bold">
+            <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl border border-black/10 bg-white">
+              <Image
+                src="/samz-fitness-hub.jpeg"
+                alt={`${BRAND.name} logo`}
+                fill
+                className="object-contain"
+                sizes="40px"
+                priority
+              />
             </span>
-            <span>{BRAND.name}</span>
+            <span className="leading-tight">{BRAND.name}</span>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">

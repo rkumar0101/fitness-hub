@@ -1,143 +1,119 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Motion";
-import { BRAND, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
+import { BRAND, BRANCHES, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
 import { waLink } from "@/lib/whatsapp";
 
 const STEPS = [
-  {
-    title: "Show up at the same time",
-    desc: "Pick a slot you can repeat 3 days a week. Same time = easier habit.",
-    accent: "blue" as const,
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M12 7v5l3 2"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" strokeWidth="2" />
-      </svg>
-    ),
-  },
-  {
-    title: "Start with a simple plan",
-    desc: "No confusion. A clean routine built around your goal, not random workouts.",
-    accent: "red" as const,
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M6 4h12v16H6z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Get your form locked in",
-    desc: "First week is technique. Once form is right, progress becomes automatic.",
-    accent: "blue" as const,
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M20 6 9 17l-5-5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Track small wins",
-    desc: "Add 1–2 reps or a little weight. Boring progress is the best progress.",
-    accent: "red" as const,
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 19V5M4 19h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path
-          d="M8 15l3-3 3 2 5-6"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
+  ["01", "Choose area", "Pick the nearest Samz Fitness Hub location."],
+  ["02", "Check plan", "Compare membership, PT, yearly, couple, or group rates."],
+  ["03", "Confirm slot", "Call or WhatsApp to confirm timing and trainer availability."],
+  ["04", "Start training", "Visit the branch and begin with basic trainer guidance."],
 ];
-
-function AccentIcon({
-  accent,
-  children,
-}: {
-  accent: "blue" | "red";
-  children: React.ReactNode;
-}) {
-  const cls = accent === "blue" ? "bg-blue-500/10 text-blue-600" : "bg-red-500/10 text-red-600";
-  return <div className={`inline-flex h-10 w-10 items-center justify-center rounded-2xl ${cls}`}>{children}</div>;
-}
 
 export default function HowToStart() {
   const whatsappHref = waLink(BRAND.phoneE164, WHATSAPP_DEFAULT_MESSAGE);
+  const images = [
+    BRANCHES[2].images[1],
+    BRANCHES[0].images[2],
+    BRANCHES[3].images[2],
+  ];
 
   return (
-    <section id="how-to-start" className="py-16">
+    <section id="how-to-start" className="scroll-mt-24 bg-white py-16">
       <Container>
-        <SectionHeading
-          eyebrow="How to start"
-          title="Start strong. Keep it simple."
-          subtitle="A good gym plan is easy to follow. Here’s how we do it."
-        />
+        <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+          <div className="rounded-[2rem] bg-[#07111F] p-6 text-white shadow-xl shadow-black/10">
+            <p className="text-sm font-semibold uppercase tracking-wide text-white/45">
+              Admission process
+            </p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight">
+              Join in four simple steps
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-white/68">
+              The goal is simple: choose the area, understand pricing, confirm
+              your slot, and start training without confusion.
+            </p>
 
-        <Reveal>
-          <div className="mt-10 grid gap-4 lg:grid-cols-4">
-            {STEPS.map((s) => (
-              <div
-                key={s.title}
-                className="rounded-3xl border border-black/10 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-sm"
-              >
-                <AccentIcon accent={s.accent}>{s.icon}</AccentIcon>
-                <p className="mt-4 text-sm font-bold text-black">{s.title}</p>
-                <p className="mt-2 text-sm leading-6 text-black/70">{s.desc}</p>
-              </div>
-            ))}
-          </div>
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {images.map((image, index) => (
+                <div
+                  key={image}
+                  className={[
+                    "relative overflow-hidden rounded-2xl border border-white/10 bg-black",
+                    index === 1 ? "mt-8 h-44" : "h-44",
+                  ].join(" ")}
+                >
+                  <Image
+                    src={image}
+                    alt="Samz Fitness Hub interior"
+                    fill
+                    className="object-cover"
+                    sizes="160px"
+                  />
+                </div>
+              ))}
+            </div>
 
-          <div className="mt-8 rounded-3xl border border-black/10 bg-black/[0.02] p-6">
-            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-              <div>
-                <p className="text-sm font-semibold text-black">New here?</p>
-                <p className="mt-1 text-sm text-black/70">
-                  Message your goal and your preferred time. We’ll tell you exactly what to do in Week 1.
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                <p className="text-2xl font-extrabold">Nil</p>
+                <p className="mt-1 text-xs text-white/60">
+                  Admission charge till offer
                 </p>
               </div>
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                <p className="text-2xl font-extrabold">Mon-Sat</p>
+                <p className="mt-1 text-xs text-white/60">
+                  Morning and evening slots
+                </p>
+              </div>
+            </div>
+          </div>
 
+          <div className="rounded-[2rem] border border-black/10 bg-[#F7FAFC] p-6 shadow-sm">
+            <div className="grid gap-4">
+              {STEPS.map(([number, title, desc]) => (
+                <div
+                  key={number}
+                  className="group grid grid-cols-[64px_1fr] gap-4 rounded-3xl border border-black/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-base font-extrabold text-white shadow-lg shadow-red-950/20">
+                    {number}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-extrabold text-black">{title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-black/65">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 rounded-3xl bg-black p-5 text-white md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <p className="text-sm font-extrabold">Want a routine first?</p>
+                <p className="mt-1 text-sm leading-6 text-white/65">
+                  Use the AI planner, then ask the gym to match it with your
+                  branch timing.
+                </p>
+              </div>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={whatsappHref}
-                  className="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white
-                             transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                  href="#plan-builder"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
                 >
-                  WhatsApp us
+                  Open AI planner
                 </a>
-
                 <a
-                  href={`tel:${BRAND.phoneE164}`}
-                  className="inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black/80
-                             transition hover:bg-black/[0.02] focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                  href={whatsappHref}
+                  target="_blank"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
                 >
-                  Call
+                  WhatsApp
                 </a>
               </div>
             </div>
-
-            <p className="mt-4 text-xs text-black/55">
-              If you can only do 3 days/week, that’s perfect. Just don’t change timings every week.
-            </p>
           </div>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

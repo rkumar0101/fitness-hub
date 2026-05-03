@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { BRAND } from "@/lib/constants";
 
 type Inputs = {
   goal: string;
@@ -80,8 +81,8 @@ export default function PlanBuilder() {
 
       setPlan(data.plan);
       setStep(3);
-    } catch (e: any) {
-      setError(e?.message ?? "Something went wrong");
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -153,7 +154,7 @@ export default function PlanBuilder() {
 <html>
 <head>
   <meta charset="utf-8"/>
-  <title>${safe(plan.headline)} - Fitness Hub</title>
+  <title>${safe(plan.headline)} - ${safe(BRAND.name)}</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 24px; color: #0f172a; }
     .top { display:flex; justify-content:space-between; align-items:center; gap:16px; }
@@ -177,7 +178,7 @@ export default function PlanBuilder() {
 <body>
   <div class="top">
     <div>
-      <div class="brand">Fitness Hub</div>
+      <div class="brand">${safe(BRAND.name)}</div>
       <div class="muted">Personalized plan report</div>
     </div>
     <div class="chip">${safe(inputs.goal)} • ${safe(inputs.experience)}</div>
@@ -253,12 +254,12 @@ export default function PlanBuilder() {
   }
 
   return (
-    <section id="plan-builder" className="bg-white py-16">
+    <section id="plan-builder" className="scroll-mt-24 bg-white py-16">
       <Container>
         <SectionHeading
           eyebrow="AI Plan Builder"
-          title="Answer a few questions. Get your plan."
-          subtitle="Quick inputs → personalized weekly split + guide. Downloadable report."
+          title="AI workout plan builder"
+          subtitle="Answer a few questions and get a personalized weekly split with a downloadable report."
         />
 
         <div className="mt-8 overflow-hidden rounded-3xl border border-black/10 bg-white">

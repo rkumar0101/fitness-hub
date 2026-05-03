@@ -26,7 +26,7 @@ export async function POST(req: Request) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: "gemini-3-flash-preview", 
+      model: "gemini-3-flash-preview",
     });
 
     const prompt = `
@@ -74,9 +74,10 @@ Schedule: ${inputs.schedulePref}
     const plan = JSON.parse(jsonStr);
 
     return NextResponse.json({ ok: true, plan });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Plan generation failed";
     return NextResponse.json(
-      { ok: false, error: err?.message ?? "Plan generation failed" },
+      { ok: false, error: message },
       { status: 500 }
     );
   }
