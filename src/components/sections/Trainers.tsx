@@ -152,7 +152,7 @@ export default function Trainers() {
                 </div>
               </div>
 
-              <p className="mt-5 text-sm leading-6 text-black/75">
+              <p className="mt-5 text-sm leading-6 text-[color:var(--fh-muted)]">
                 {active.bio}
               </p>
 

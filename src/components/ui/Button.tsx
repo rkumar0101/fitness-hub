@@ -33,7 +33,12 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={cls} target={target}>
+      <Link
+        href={href}
+        className={cls}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      >
         {children}
       </Link>
     );

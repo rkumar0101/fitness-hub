@@ -106,6 +106,7 @@ export default function HowToStart() {
                 <a
                   href={whatsappHref}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
                 >
                   WhatsApp

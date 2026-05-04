@@ -122,7 +122,7 @@ export default function Reviews() {
                   </span>
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-black/75">
+                <p className="mt-4 text-sm leading-6 text-[color:var(--fh-muted)]">
                   &quot;{review.text}&quot;
                 </p>
               </article>

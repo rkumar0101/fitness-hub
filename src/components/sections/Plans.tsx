@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { BRAND, BRANCHES, type Branch } from "@/lib/constants";
 import { waLink } from "@/lib/whatsapp";
+import TiltCard from "@/components/ui/TiltCard";
 
 const currency = (n: number) =>
   n.toLocaleString("en-IN", { maximumFractionDigits: 0 });
@@ -129,43 +130,56 @@ export default function Plans() {
           transition={{ duration: 0.28 }}
           className="mt-6 overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-xl shadow-black/5"
         >
-          <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="relative min-h-[520px] bg-black">
-              <Image
-                src={activeImage}
-                alt={`${active.area} gym view`}
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 55vw, 100vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5">
-                <div className="flex flex-wrap gap-2">
-                  {active.images.slice(0, 5).map((image, index) => (
-                    <button
-                      key={image}
-                      type="button"
-                      onClick={() => setImageIndex(index)}
-                      className={[
-                        "relative h-16 w-24 overflow-hidden rounded-2xl border transition",
-                        index === imageIndex
-                          ? "border-white opacity-100"
-                          : "border-white/20 opacity-70 hover:opacity-100",
-                      ].join(" ")}
-                      aria-label={`Show ${active.area} image ${index + 1}`}
-                    >
-                      <Image
-                        src={image}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        sizes="96px"
-                      />
-                    </button>
-                  ))}
+          <div className="grid lg:grid-cols-[1fr_1fr]">
+            <div className="bg-[#07111F] p-4">
+              <TiltCard className="relative h-[430px] overflow-hidden rounded-[1.55rem] lg:h-full lg:min-h-[560px]">
+                <Image
+                  src={activeImage}
+                  alt={`${active.area} gym view`}
+                  fill
+                  className="object-cover transition duration-700"
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/12 to-transparent" />
+                <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/38 px-4 py-2 text-xs font-semibold text-white backdrop-blur">
+                  {active.landmark}
                 </div>
-              </div>
+                <div className="absolute bottom-5 left-5 right-5">
+                  <div className="mb-4 max-w-lg text-white">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-white/55">
+                      Membership preview
+                    </p>
+                    <h3 className="mt-1 text-3xl font-extrabold tracking-tight">
+                      {active.area}
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {active.images.slice(0, 5).map((image, index) => (
+                      <button
+                        key={image}
+                        type="button"
+                        onClick={() => setImageIndex(index)}
+                        className={[
+                          "relative h-16 w-24 overflow-hidden rounded-2xl border transition",
+                          index === imageIndex
+                            ? "border-white opacity-100"
+                            : "border-white/20 opacity-70 hover:opacity-100",
+                        ].join(" ")}
+                        aria-label={`Show ${active.area} image ${index + 1}`}
+                      >
+                        <Image
+                          src={image}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="96px"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
             </div>
 
             <div className="p-6 md:p-8">

@@ -5,6 +5,7 @@ import Facilities from "@/components/sections/Facilities";
 // import Programs from "@/components/sections/Programs";
 import Plans from "@/components/sections/Plans";
 import PlanBuilder from "@/components/sections/PlanBuilder";
+import ScrollJourney from "@/components/sections/ScrollJourney";
 import Trainers from "@/components/sections/Trainers";
 import Schedule from "@/components/sections/Schedule";
 import Reviews from "@/components/sections/Reviews";
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Hero />
         <Stats />
         <Facilities />
+        <ScrollJourney />
         {/* <Programs /> */}
         <Plans />
         <PlanBuilder />

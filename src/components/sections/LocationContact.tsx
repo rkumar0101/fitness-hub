@@ -17,7 +17,6 @@ export default function LocationContact() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    branch: BRANCHES[0].area,
     message: "",
   });
 
@@ -42,7 +41,7 @@ export default function LocationContact() {
         body: JSON.stringify({
           name: form.name,
           phone: form.phone,
-          goal: form.branch,
+          goal: active.area,
           message: form.message,
           source: "branch-contact",
         }),
@@ -54,7 +53,6 @@ export default function LocationContact() {
       setForm({
         name: "",
         phone: "",
-        branch: BRANCHES[0].area,
         message: "",
       });
     } catch {
@@ -83,7 +81,6 @@ export default function LocationContact() {
                     onMouseEnter={() => setActiveId(branch.id)}
                     onClick={() => {
                       setActiveId(branch.id);
-                      setForm((p) => ({ ...p, branch: branch.area }));
                     }}
                     className={[
                       "grid grid-cols-[86px_1fr] gap-4 rounded-3xl border p-3 text-left transition hover:-translate-y-0.5 hover:shadow-md",
@@ -182,6 +179,9 @@ export default function LocationContact() {
                   className="mt-6 scroll-mt-24 rounded-3xl border border-black/10 bg-[#F7FAFC] p-5"
                 >
                   <p className="text-sm font-extrabold">Request a call back</p>
+                  <p className="mt-1 text-xs text-black/55">
+                    Selected area: <span className="font-semibold">{active.area}</span>
+                  </p>
                   <form onSubmit={submit} className="mt-4 grid gap-3">
                     <div className="grid gap-3 sm:grid-cols-2">
                       <input
@@ -201,17 +201,6 @@ export default function LocationContact() {
                         placeholder="Phone"
                       />
                     </div>
-                    <select
-                      value={form.branch}
-                      onChange={(e) =>
-                        setForm((p) => ({ ...p, branch: e.target.value }))
-                      }
-                      className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500/30"
-                    >
-                      {BRANCHES.map((branch) => (
-                        <option key={branch.id}>{branch.area}</option>
-                      ))}
-                    </select>
                     <textarea
                       value={form.message}
                       onChange={(e) =>

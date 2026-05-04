@@ -6,9 +6,13 @@ import { Badge } from "@/components/ui/Badge";
 import { BRAND, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
 import { waLink } from "@/lib/whatsapp";
 import HeroCarousel from "@/components/sections/HeroCarousel";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
   const whatsappHref = waLink(BRAND.phoneE164, WHATSAPP_DEFAULT_MESSAGE);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 520], [0, 90]);
+  const opacity = useTransform(scrollY, [0, 520], [1, 0.78]);
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -21,7 +25,7 @@ export default function Hero() {
 
       <Container>
         <div className="grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
-          <div>
+          <motion.div style={{ y, opacity }}>
             <Badge>{BRAND.cityLine} - local training spaces</Badge>
 
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -65,7 +69,7 @@ export default function Hero() {
                 Arabinda Pally
               </span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="relative">
             <HeroCarousel whatsappHref={whatsappHref} />

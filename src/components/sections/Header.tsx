@@ -7,6 +7,8 @@ import { waLink } from "@/lib/whatsapp";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,7 +27,9 @@ export default function Header() {
     <header
       className={[
         "sticky top-0 z-50 border-b",
-        scrolled ? "bg-white/80 backdrop-blur border-black/10" : "bg-white border-transparent",
+        scrolled
+          ? "border-black/10 bg-white/82 shadow-lg shadow-black/5 backdrop-blur-xl"
+          : "border-transparent bg-white/92 backdrop-blur",
       ].join(" ")}
     >
       <Container>
@@ -57,6 +61,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Button href={whatsappHref} target="_blank" className="hidden sm:inline-flex">
               WhatsApp
             </Button>
@@ -101,6 +106,7 @@ export default function Header() {
           ) : null}
         </AnimatePresence>
       </Container>
+      <ScrollProgress />
     </header>
   );
 }
